@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Cedar Horizon Villa",
+    "style": "Modern",
+    "location": "Cluj-Napoca",
+    "size": "280 m²",
+    "budget": "€250k-€330k",
+    "architect": "Aria Studio",
+    "email": "contact@ariastudio.ro",
+    "summary": "Vilă cu acoperiș plat, vitraje panoramice și zonă open-space pentru o familie de cinci persoane.",
+    "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": 7,
+    "name": "Urban Minimal Loft",
+    "style": "Minimalist",
+    "location": "Bucharest",
+    "size": "220 m²",
+    "budget": "€210k-€290k",
+    "architect": "Aria Studio",
+    "email": "contact@ariastudio.ro",
+    "summary": "Loft minimalist în oraș, cu spații deschise și materiale industriale.",
+    "image": "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": 8,
+    "name": "Forest Cabin Escape",
+    "style": "Rustic",
+    "location": "Brasov",
+    "size": "180 m²",
+    "budget": "€170k-€240k",
+    "architect": "Aria Studio",
+    "email": "contact@ariastudio.ro",
+    "summary": "Cabana rustică în pădure, cu șemineu și terasă mare.",
+    "image": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": 9,
+    "name": "Sunny Terrace Villa",
+    "style": "Mediteranean",
+    "location": "Constanta",
+    "size": "250 m²",
+    "budget": "€230k-€310k",
+    "architect": "Aria Studio",
+    "email": "contact@ariastudio.ro",
+    "summary": "Vilă mediteraneană cu terase însorite și grădină interioară.",
+    "image": "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": 10,
+    "name": "Glass Cube Residence",
+    "style": "Modern",
+    "location": "Cluj-Napoca",
+    "size": "270 m²",
+    "budget": "€260k-€340k",
+    "architect": "Aria Studio",
+    "email": "contact@ariastudio.ro",
+    "summary": "Reședință modernă cu fațade de sticlă și design cubic.",
+    "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+  }
+]

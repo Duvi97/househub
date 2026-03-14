@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HouseHub (HH) | Găsește proiectul casei tale de vis</title>
+    <meta
+      name="description"
+      content="HouseHub (HH) conectează arhitecți și oameni care își construiesc casa. Explorează proiecte arhitecturale, filtrează după stil și contactează arhitecții."
+    />
+    <link rel="icon" type="image/png" sizes="1024x1024" href="favicon.png" />
+    <link rel="apple-touch-icon" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      fetch('config.json')
+        .then(response => response.json())
+        .then(config => {
+          if (config.underDevelopment) {
+            document.body.innerHTML = `
+              <div style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif; background-color: #f5f5f5;">
+                <div style="text-align: center;">
+                  <h1 style="color: #333; margin-bottom: 20px;">Site în dezvoltare</h1>
+                  <p style="color: #666; font-size: 18px;">Ne întoarcem curând cu proiecte noi!</p>
+                </div>
+              </div>
+            `;
+          }
+        })
+        .catch(error => console.error('Error loading config:', error));
+    </script>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <nav class="nav container" aria-label="Navigație principală">
+        <a class="brand" href="#" aria-label="Pagina principală HouseHub">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="image.png" alt="" />
+          </span>
+          <span class="brand-text">
+            <strong>HouseHub</strong>
+            <small>Acasă pentru proiectele de case</small>
+          </span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">
+          Meniu
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#projects">Proiecte</a></li>
+          <li><a href="#architects">Colaborează</a></li>
+          <li><a href="#business">Despre</a></li>
+          <li><a href="#contact">Anunțuri</a></li>
+          <li><a href="#contact-info">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero container">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">PLATFORMĂ MVP</p>
+          <h1>Construiește drumul spre casa ta cu arhitectul potrivit.</h1>
+          <p>
+            HouseHub (HH) conectează arhitecți talentați cu oameni pasionați de case. Descoperă proiecte autentice, filtrează după stil și intră direct în legătură cu creatorii.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#projects">Vezi proiecte</a>
+            <a class="btn btn-secondary" href="#architects">Înscrie-te ca arhitect</a>
+          </div>
+        </div>
+
+        <div class="hero-panel hero-logo-panel reveal delay-1" aria-label="Logo HouseHub">
+          <img src="image.png" alt="HouseHub logo" class="hero-logo" />
+        </div>
+      </section>
+
+      <section class="stats container reveal" aria-label="Metrici MVP">
+        <article>
+          <h3>10+ <span class="trend-up" aria-hidden="true">↗</span></h3>
+          <p>Proiecte</p>
+          <div class="growth-track" aria-hidden="true">
+            <span class="growth-fill"></span>
+          </div>
+          <small class="growth-note">în creștere continuă</small>
+        </article>
+        <article>
+          <h3>2 <span class="trend-up" aria-hidden="true">↗</span></h3>
+          <p>Arhitecți</p>
+          <div class="growth-track" aria-hidden="true">
+            <span class="growth-fill"></span>
+          </div>
+          <small class="growth-note">comunitate în expansiune</small>
+        </article>
+        <article>
+          <h3>4</h3>
+          <p>Stiluri de case</p>
+        </article>
+        <article>
+          <h3>100%</h3>
+          <p>Contact direct</p>
+        </article>
+      </section>
+
+      <section class="section container" id="projects">
+        <div class="section-head reveal">
+          <p class="eyebrow">Galerie proiecte</p>
+          <h2>Găsește proiecte de case după stil</h2>
+        </div>
+
+        <div class="filters reveal delay-1" role="group" aria-label="Filtre proiecte">
+          <div class="filter-group">
+            <label for="projectArchitectSelect">Arhitect:</label>
+            <select id="projectArchitectSelect">
+              <option value="all">Toți arhitecții</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <button id="filterToggle" class="btn btn-secondary">Filtre</button>
+            <div id="filterOptions" class="filter-options" style="display: none;">
+              <span>Tipuri de case:</span>
+              <button class="chip active" data-filter="all">Toate</button>
+              <button class="chip" data-filter="Modern">Modern</button>
+              <button class="chip" data-filter="Minimalist">Minimalist</button>
+              <button class="chip" data-filter="Rustic">Rustic</button>
+              <button class="chip" data-filter="Mediteranean">Mediteranean</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-grid" id="projectsGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="section soft-bg" id="architects">
+        <div class="container architect-layout">
+          <div class="section-head reveal">
+            <p class="eyebrow">Pentru arhitecți</p>
+            <h2>Prezintă-ți proiectele și spune ceva despre povestea ta</h2>
+            <p>
+              Acest MVP validează cererea. Pe măsură ce HouseHub crește, arhitecții vor avea planuri de listare prin abonament sau plată per proiect.
+            </p>
+          </div>
+
+          <form class="card form reveal delay-1" id="architectForm" novalidate>
+            <h3>Interes pentru înscriere arhitect</h3>
+            <label>
+              Nume
+              <input type="text" name="name" placeholder="Numele complet" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" placeholder="you@studio.com" required />
+            </label>
+            <label>
+              Studio / Firmă
+              <input type="text" name="firm" placeholder="Numele studioului" required />
+            </label>
+            <label>
+              Descrierea ta
+              <textarea name="description" rows="3" placeholder="Spune-ne povestea ta, inspirația și viziunea..." required></textarea>
+            </label>
+            <label>
+              Proiecte gata de listare
+              <input type="number" name="projects" min="1" max="50" placeholder="3" required />
+            </label>
+            <button class="btn btn-primary" type="submit">Solicită acces timpuriu</button>
+            <p class="form-feedback" id="architectFeedback" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="section container" id="business">
+        <div class="section-head reveal">
+          <p class="eyebrow">Descriere</p>
+          <h2>Pașii tăi către casa perfectă</h2>
+        </div>
+
+        <div class="roadmap">
+          <article class="card reveal">
+            <h3>Faza 1</h3>
+            <p>Alege proiectul care ți se potrivește din portofoliile arhitecților noștri.</p>
+          </article>
+          <article class="card reveal delay-1">
+            <h3>Faza 2</h3>
+            <p>Contactează arhitectul sau compania pentru proiect sau personalizare pentru terenul tău.</p>
+          </article>
+          <article class="card reveal delay-2">
+            <h3>Faza 3</h3>
+            <p>Beneficiază de parteneriate cu firme de construcții și furnizori de servicii pentru casă.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section container" id="contact">
+        <div class="section-head reveal">
+          <p class="eyebrow">Anunțuri</p>
+          <h2>Spune-ne ce direcție ai pentru casa ta de vis</h2>
+        </div>
+
+        <form class="card form reveal delay-1" id="clientForm" novalidate>
+          <label>
+            Nume
+            <input type="text" name="clientName" required placeholder="Numele tău" />
+          </label>
+          <label>
+            Email
+            <input type="email" name="clientEmail" required placeholder="you@email.com" />
+          </label>
+          <label>
+            Stil preferat
+            <select name="style" required>
+              <option value="">Selectează stilul</option>
+              <option value="Modern">Modern</option>
+              <option value="Minimalist">Minimalist</option>
+              <option value="Rustic">Rustic</option>
+              <option value="Mediteranean">Mediteranean</option>
+            </select>
+          </label>
+          <label>
+            Descriere
+            <textarea
+              name="brief"
+              rows="4"
+              placeholder="Descrie locația, numărul de camere, bugetul și caracteristicile dorite..."
+              required
+            ></textarea>
+          </label>
+          <button class="btn btn-primary" type="submit">Trimite anunțul</button>
+          <p class="form-feedback" id="clientFeedback" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="contact-info reveal delay-2" id="contact-info">
+          <h3>Contact</h3>
+          <p>Email: contact@househub.ro</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-layout">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="image.png" alt="" />
+          </span>
+          <span class="brand-text">
+            <strong>HouseHub</strong>
+            <small>MVP demonstrativ</small>
+          </span>
+        </div>
+        <p>© <span id="year"></span> HouseHub. Construit pentru a conecta arhitecți și viitori proprietari.</p>
+      </div>
+    </footer>
+
+    <dialog id="projectDialog" class="dialog">
+      <article class="dialog-card">
+        <button class="dialog-close" id="closeDialog" aria-label="Închide detaliile proiectului">×</button>
+        <div id="dialogContent"></div>
+      </article>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>

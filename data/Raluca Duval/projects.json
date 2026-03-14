@@ -1,0 +1,26 @@
+[
+  {
+    "id": 15,
+    "name": "Casa A",
+    "style": "Modern",
+    "location": "București",
+    "size": "250 m²",
+    "budget": "€240k-€320k",
+    "architect": "Raluca Duval",
+    "email": "raluca@duvalstudio.ro",
+    "summary": "Casă modernă cu design elegant și spații deschise, perfectă pentru familii active.",
+    "image": "data/Raluca Duval/images/casa_a.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Casa B",
+    "style": "Minimalist",
+    "location": "Cluj-Napoca",
+    "size": "220 m²",
+    "budget": "€210k-€290k",
+    "architect": "Raluca Duval",
+    "email": "raluca@duvalstudio.ro",
+    "summary": "Reședință minimalistă cu linii curate și materiale naturale, oferind un mediu calm și sofisticat.",
+    "image": "data/Raluca Duval/images/casa_b.jpg"
+  }
+]
